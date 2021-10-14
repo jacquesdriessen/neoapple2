@@ -165,18 +165,18 @@ begin
   power_on : process(CLK_14M)
   begin
     if rising_edge(CLK_14M) then
---      if flash_clk(22) = '1' then         
+      if flash_clk(22) = '1' then         
         --- zf: For ease-of-simulation, we set this to count to 32
-      if flash_clk(5) = '1' then
+--      if flash_clk(5) = '1' then
         power_on_reset <= '0';
       end if;
     end if;
   end process;
 
-  -- zf: We pause boot process until a key or BTN0 is pressed, to allow loading of a disk image
+  -- zf: We pause boot process until BTN0 is pressed, to allow loading of a disk image
   start_on_keypress: process(CLK_14M)
   begin
-    if rising_edge(CLK_14M) and (PS2_CLK = '0' or in_simulation or KEY(0) = '1') then
+    if rising_edge(CLK_14M) and (in_simulation or KEY(0) = '1') then
         pause <= '0';
     end if;
   end process;

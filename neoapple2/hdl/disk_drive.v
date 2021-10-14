@@ -49,7 +49,7 @@ assign debug_loading = loading_image_ready;
 assign debug_loading_pos = loading_pos;
 
 initial begin
-    $readmemh("d:/Work/FPGA/rtl-toys/neoapple2/hdl/dos3.3.1983.nib.hex", image);
+    $readmemh("initial.nib.hex", image);
 end
 
 // Data loading from PS CPU

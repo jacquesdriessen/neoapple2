@@ -65,7 +65,7 @@ FRESULT scan_files (
 //            	printf("  dir: %s\n\r", fn);
             } else {                                       /* It is a file. */
             	int len = strlen(fn);
-            	if (len >= 5 && strcmp(&fn[len-4], ".nib") == 0) {
+            	if ((len >= 5 && strcmp(&fn[len-4], ".nib") == 0) || (len >= 5 && strcmp(&fn[len-4], ".NIB")) == 0) {
             		strcpy(files[numFiles+1], fn);
             		numFiles++;
             	} else {

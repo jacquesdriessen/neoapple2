@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
-<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdsproject="http://www.xilinx.com/sdsproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="neoapple2ui_system" platform="D:/Work/FPGA/rtl-toys/neoapple2ui/neoapple2/export/neoapple2/neoapple2.xpfm" platformUID="xilinx:pynq-z1::0.0(custom)" sysConfig="neoapple2" runtime="C/C++" rootFSLocation="" linuxImage="" sysroot="">
-  <configuration name="Debug" id="com.xilinx.sdx.system.managedbuilder.debugConfiguration.1258420873">
+<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdsproject="http://www.xilinx.com/sdsproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="neoapple2ui_system" platform="C:/Users/jacques/Documents/temp/neoapple2/export/neoapple2/neoapple2.xpfm" platformUID="xilinx:pynq-z2::0.0(custom)" sysConfig="neoapple2" runtime="C/C++" rootFSLocation="" linuxImage="" sysroot="">
+  <configuration name="Debug" id="com.xilinx.sdx.system.managedbuilder.debugConfiguration.364831076">
     <configBuildOptions xsi:type="systemproject:SystemOptions">
       <applications name="neoapple2ui" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Debug"/>
       <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
@@ -10,7 +10,7 @@
       <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
     </lastBuildOptions>
   </configuration>
-  <configuration name="Release" id="com.xilinx.sdx.system.managedbuilder.releaseConfiguration.1742846783">
+  <configuration name="Release" id="com.xilinx.sdx.system.managedbuilder.releaseConfiguration.1840316894">
     <configBuildOptions xsi:type="systemproject:SystemOptions">
       <applications name="neoapple2ui" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Release"/>
       <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
