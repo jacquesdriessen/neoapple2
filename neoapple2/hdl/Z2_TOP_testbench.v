@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module Z1_TOP_testbench(
+module Z2_TOP_testbench(
 
     );
 
@@ -14,7 +14,7 @@ reg image_clk = 0;
 reg image_start = 0;
 reg [7:0] image_data = 0;
 
-Z1_TOP UUT (.CLK_64M(CLK_64M), .CLK_28M(CLK_28M), .CLK_14M(CLK_14M), .image_clk(image_clk), .image_start(image_start), .image_data(image_data));
+Z2_TOP UUT (.CLK_64M(CLK_64M), .CLK_28M(CLK_28M), .CLK_14M(CLK_14M), .image_clk(image_clk), .image_start(image_start), .image_data(image_data));
 
 
 initial begin 

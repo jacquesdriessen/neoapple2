@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
 --
--- Z1 top-level module for the Apple ][
+-- Z2 top-level module for the Apple ][
 --
 -- Feng Zhou, 2021-6
 --
@@ -51,7 +51,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity Z1_TOP is
+entity Z2_TOP is
 
   port (
     -- Clocks
@@ -89,9 +89,9 @@ entity Z1_TOP is
     
     );
   
-end Z1_TOP;
+end Z2_TOP;
 
-architecture datapath of Z1_TOP is
+architecture datapath of Z2_TOP is
 
 --  component CLK28MPLL is
 --    port (
