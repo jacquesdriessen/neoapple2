@@ -23,7 +23,7 @@
 # 2. The following source(s) files that were local or imported into the original project.
 #    (Please see the '$orig_proj_dir' and '$origin_dir' variable setting below at the start of the script)
 #
-#    "neoapple2/Z1_TOP_testbench_behav.wcfg"
+#    "neoapple2/Z2_TOP_testbench_behav.wcfg"
 #
 # 3. The following remote source files that were added to the original project:-
 #
@@ -41,9 +41,9 @@
 #    "hdl/keyboard.vhd"
 #    "hdl/disk_ii_rom.vhd"
 #    "hdl/disk_ii.vhd"
-#    "hdl/Z1_TOP.vhd"
-#    "PYNQ-Z1_C.xdc"
-#    "hdl/Z1_TOP_testbench.v"
+#    "hdl/Z2_TOP.vhd"
+#    "PYNQ-Z2_C.xdc"
+#    "hdl/Z2_TOP_testbench.v"
 #
 #*****************************************************************************************
 
@@ -51,7 +51,7 @@
 proc checkRequiredFiles { origin_dir} {
   set status true
   set files [list \
-   "Z1_TOP_testbench_behav.wcfg" \
+   "Z2_TOP_testbench_behav.wcfg" \
   ]
   foreach ifile $files {
     if { ![file isfile $ifile] } {
@@ -75,9 +75,9 @@ proc checkRequiredFiles { origin_dir} {
    "hdl/keyboard.vhd" \
    "hdl/disk_ii_rom.vhd" \
    "hdl/disk_ii.vhd" \
-   "hdl/Z1_TOP.vhd" \
-   "PYNQ-Z1_C.xdc" \
-   "hdl/Z1_TOP_testbench.v" \
+   "hdl/Z2_TOP.vhd" \
+   "PYNQ-Z2_C.xdc" \
+   "hdl/Z2_TOP_testbench.v" \
   ]
   foreach ifile $files {
     if { ![file isfile $ifile] } {
@@ -184,13 +184,13 @@ set proj_dir [get_property directory [current_project]]
 
 # Set project properties
 set obj [current_project]
-set_property -name "board_part" -value "www.digilentinc.com:pynq-z1:part0:1.0" -objects $obj
+set_property -name "board_part" -value "tul.com.tw:pynq-z2:part0:1.0" -objects $obj
 set_property -name "default_lib" -value "xil_defaultlib" -objects $obj
 set_property -name "enable_vhdl_2008" -value "1" -objects $obj
 set_property -name "ip_cache_permissions" -value "read write" -objects $obj
 set_property -name "ip_output_repo" -value "$proj_dir/${_xil_proj_name_}.cache/ip" -objects $obj
 set_property -name "mem.enable_memory_map_generation" -value "1" -objects $obj
-set_property -name "platform.board_id" -value "pynq-z1" -objects $obj
+set_property -name "platform.board_id" -value "pynq-z2" -objects $obj
 set_property -name "sim.central_dir" -value "$proj_dir/${_xil_proj_name_}.ip_user_files" -objects $obj
 set_property -name "sim.ip.auto_export_scripts" -value "1" -objects $obj
 set_property -name "simulator_language" -value "Mixed" -objects $obj
@@ -228,7 +228,7 @@ set files [list \
  [file normalize "${origin_dir}/hdl/keyboard.vhd"] \
  [file normalize "${origin_dir}/hdl/disk_ii_rom.vhd"] \
  [file normalize "${origin_dir}/hdl/disk_ii.vhd"] \
- [file normalize "${origin_dir}/hdl/Z1_TOP.vhd"] \
+ [file normalize "${origin_dir}/hdl/Z2_TOP.vhd"] \
 ]
 add_files -norecurse -fileset $obj $files
 
@@ -283,7 +283,7 @@ set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "VHDL" -objects $file_obj
 
-set file "$origin_dir/hdl/Z1_TOP.vhd"
+set file "$origin_dir/hdl/Z2_TOP.vhd"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "VHDL" -objects $file_obj
@@ -306,9 +306,9 @@ if {[string equal [get_filesets -quiet constrs_1] ""]} {
 set obj [get_filesets constrs_1]
 
 # Add/Import constrs file and set constrs file properties
-set file "[file normalize "$origin_dir/PYNQ-Z1_C.xdc"]"
+set file "[file normalize "$origin_dir/PYNQ-Z2_C.xdc"]"
 set file_added [add_files -norecurse -fileset $obj [list $file]]
-set file "$origin_dir/PYNQ-Z1_C.xdc"
+set file "$origin_dir/PYNQ-Z2_C.xdc"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets constrs_1] [list "*$file"]]
 set_property -name "file_type" -value "XDC" -objects $file_obj
@@ -324,13 +324,13 @@ if {[string equal [get_filesets -quiet sim_1] ""]} {
 # Set 'sim_1' fileset object
 set obj [get_filesets sim_1]
 set files [list \
- [file normalize "${origin_dir}/hdl/Z1_TOP_testbench.v"] \
+ [file normalize "${origin_dir}/hdl/Z2_TOP_testbench.v"] \
 ]
 add_files -norecurse -fileset $obj $files
 
 # Import local files from the original project
 set files [list \
- [file normalize "${origin_dir}/Z1_TOP_testbench_behav.wcfg" ]\
+ [file normalize "${origin_dir}/Z2_TOP_testbench_behav.wcfg" ]\
 ]
 set imported_files [import_files -fileset sim_1 $files]
 
@@ -343,7 +343,7 @@ set imported_files [import_files -fileset sim_1 $files]
 # Set 'sim_1' fileset properties
 set obj [get_filesets sim_1]
 set_property -name "hbs.configure_design_for_hier_access" -value "1" -objects $obj
-set_property -name "top" -value "Z1_TOP_testbench" -objects $obj
+set_property -name "top" -value "Z2_TOP_testbench" -objects $obj
 set_property -name "top_lib" -value "xil_defaultlib" -objects $obj
 
 # Set 'utils_1' fileset object
@@ -397,8 +397,8 @@ if { [get_files disk_ii_rom.vhd] == "" } {
 if { [get_files disk_ii.vhd] == "" } {
   import_files -quiet -fileset sources_1 hdl/disk_ii.vhd
 }
-if { [get_files Z1_TOP.vhd] == "" } {
-  import_files -quiet -fileset sources_1 hdl/Z1_TOP.vhd
+if { [get_files Z2_TOP.vhd] == "" } {
+  import_files -quiet -fileset sources_1 hdl/Z2_TOP.vhd
 }
 
 
@@ -406,7 +406,7 @@ if { [get_files Z1_TOP.vhd] == "" } {
 proc cr_bd_design_1 { parentCell } {
 # The design that will be created by this Tcl proc contains the following 
 # module references:
-# Z1_TOP
+# Z2_TOP
 
 
 
@@ -453,7 +453,7 @@ proc cr_bd_design_1 { parentCell } {
   set bCheckModules 1
   if { $bCheckModules == 1 } {
      set list_check_mods "\ 
-  Z1_TOP\
+  Z2_TOP\
   "
 
    set list_mods_missing ""
@@ -523,13 +523,13 @@ proc cr_bd_design_1 { parentCell } {
   set aud_sd_0 [ create_bd_port -dir O aud_sd_0 ]
   set sysclk [ create_bd_port -dir I -type clk -freq_hz 125000000 sysclk ]
 
-  # Create instance: Z1_TOP_0, and set properties
-  set block_name Z1_TOP
-  set block_cell_name Z1_TOP_0
-  if { [catch {set Z1_TOP_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: Z2_TOP_0, and set properties
+  set block_name Z2_TOP
+  set block_cell_name Z2_TOP_0
+  if { [catch {set Z2_TOP_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $Z1_TOP_0 eq "" } {
+   } elseif { $Z2_TOP_0 eq "" } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -1401,28 +1401,28 @@ proc cr_bd_design_1 { parentCell } {
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
 
   # Create port connections
-  connect_bd_net -net KEY_0_1 [get_bd_ports KEY_0] [get_bd_pins Z1_TOP_0/KEY]
+  connect_bd_net -net KEY_0_1 [get_bd_ports KEY_0] [get_bd_pins Z2_TOP_0/KEY]
   connect_bd_net -net Net [get_bd_pins processing_system7_0/GPIO_O] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din]
-  connect_bd_net -net PS2_CLK_0_1 [get_bd_ports PS2_CLK_0] [get_bd_pins Z1_TOP_0/PS2_CLK]
-  connect_bd_net -net PS2_DAT_0_1 [get_bd_ports PS2_DAT_0] [get_bd_pins Z1_TOP_0/PS2_DAT]
-  connect_bd_net -net SW_0_1 [get_bd_ports SW_0] [get_bd_pins Z1_TOP_0/SW]
-  connect_bd_net -net Z1_TOP_0_aud_pwm [get_bd_ports aud_pwm_0] [get_bd_pins Z1_TOP_0/aud_pwm]
-  connect_bd_net -net Z1_TOP_0_aud_sd [get_bd_ports aud_sd_0] [get_bd_pins Z1_TOP_0/aud_sd]
-  connect_bd_net -net Z1_TOP_0_vid_data [get_bd_pins Z1_TOP_0/vid_data] [get_bd_pins rgb2dvi_0/vid_pData]
-  connect_bd_net -net Z1_TOP_0_vid_hsync [get_bd_pins Z1_TOP_0/vid_hsync] [get_bd_pins rgb2dvi_0/vid_pHSync]
-  connect_bd_net -net Z1_TOP_0_vid_vde [get_bd_pins Z1_TOP_0/vid_vde] [get_bd_pins rgb2dvi_0/vid_pVDE]
-  connect_bd_net -net Z1_TOP_0_vid_vsync [get_bd_pins Z1_TOP_0/vid_vsync] [get_bd_pins rgb2dvi_0/vid_pVSync]
+  connect_bd_net -net PS2_CLK_0_1 [get_bd_ports PS2_CLK_0] [get_bd_pins Z2_TOP_0/PS2_CLK]
+  connect_bd_net -net PS2_DAT_0_1 [get_bd_ports PS2_DAT_0] [get_bd_pins Z2_TOP_0/PS2_DAT]
+  connect_bd_net -net SW_0_1 [get_bd_ports SW_0] [get_bd_pins Z2_TOP_0/SW]
+  connect_bd_net -net Z2_TOP_0_aud_pwm [get_bd_ports aud_pwm_0] [get_bd_pins Z2_TOP_0/aud_pwm]
+  connect_bd_net -net Z2_TOP_0_aud_sd [get_bd_ports aud_sd_0] [get_bd_pins Z2_TOP_0/aud_sd]
+  connect_bd_net -net Z2_TOP_0_vid_data [get_bd_pins Z2_TOP_0/vid_data] [get_bd_pins rgb2dvi_0/vid_pData]
+  connect_bd_net -net Z2_TOP_0_vid_hsync [get_bd_pins Z2_TOP_0/vid_hsync] [get_bd_pins rgb2dvi_0/vid_pHSync]
+  connect_bd_net -net Z2_TOP_0_vid_vde [get_bd_pins Z2_TOP_0/vid_vde] [get_bd_pins rgb2dvi_0/vid_pVDE]
+  connect_bd_net -net Z2_TOP_0_vid_vsync [get_bd_pins Z2_TOP_0/vid_vsync] [get_bd_pins rgb2dvi_0/vid_pVSync]
   connect_bd_net -net clk_in1_0_1 [get_bd_ports sysclk] [get_bd_pins clk_wiz_0/clk_in1]
-  connect_bd_net -net clk_wiz_0_CLK_14M [get_bd_pins Z1_TOP_0/CLK_14M] [get_bd_pins clk_wiz_0/CLK_14M]
-  connect_bd_net -net clk_wiz_0_CLK_28M [get_bd_pins Z1_TOP_0/CLK_28M] [get_bd_pins clk_wiz_0/CLK_28M]
-  connect_bd_net -net clk_wiz_0_CLK_64M [get_bd_pins Z1_TOP_0/CLK_64M] [get_bd_pins clk_wiz_0/CLK_64M] [get_bd_pins rgb2dvi_0/PixelClk]
+  connect_bd_net -net clk_wiz_0_CLK_14M [get_bd_pins Z2_TOP_0/CLK_14M] [get_bd_pins clk_wiz_0/CLK_14M]
+  connect_bd_net -net clk_wiz_0_CLK_28M [get_bd_pins Z2_TOP_0/CLK_28M] [get_bd_pins clk_wiz_0/CLK_28M]
+  connect_bd_net -net clk_wiz_0_CLK_64M [get_bd_pins Z2_TOP_0/CLK_64M] [get_bd_pins clk_wiz_0/CLK_64M] [get_bd_pins rgb2dvi_0/PixelClk]
   connect_bd_net -net rgb2dvi_0_TMDS_Clk_n [get_bd_ports TMDS_Clk_n_0] [get_bd_pins rgb2dvi_0/TMDS_Clk_n]
   connect_bd_net -net rgb2dvi_0_TMDS_Clk_p [get_bd_ports TMDS_Clk_p_0] [get_bd_pins rgb2dvi_0/TMDS_Clk_p]
   connect_bd_net -net rgb2dvi_0_TMDS_Data_n [get_bd_ports TMDS_Data_n_0] [get_bd_pins rgb2dvi_0/TMDS_Data_n]
   connect_bd_net -net rgb2dvi_0_TMDS_Data_p [get_bd_ports TMDS_Data_p_0] [get_bd_pins rgb2dvi_0/TMDS_Data_p]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins Z1_TOP_0/image_data] [get_bd_pins xlslice_0/Dout]
-  connect_bd_net -net xlslice_1_Dout [get_bd_pins Z1_TOP_0/image_clk] [get_bd_pins xlslice_1/Dout]
-  connect_bd_net -net xlslice_2_Dout [get_bd_pins Z1_TOP_0/image_start] [get_bd_pins xlslice_2/Dout]
+  connect_bd_net -net xlslice_0_Dout [get_bd_pins Z2_TOP_0/image_data] [get_bd_pins xlslice_0/Dout]
+  connect_bd_net -net xlslice_1_Dout [get_bd_pins Z2_TOP_0/image_clk] [get_bd_pins xlslice_1/Dout]
+  connect_bd_net -net xlslice_2_Dout [get_bd_pins Z2_TOP_0/image_start] [get_bd_pins xlslice_2/Dout]
 
   # Create address segments
 
